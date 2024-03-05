@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="content">
+  <!-- Main Content Area -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Left Sidebar - Category Section -->
+
+        <div class="dictionary-container">
+        <div class="col-md-12">
+            <h4>Dictionary </h4>
+    <form id="dictionaryForm" action="/dictionary" method="post">
+    {% csrf_token %}
+    <input type="text" id="wordInput" placeholder="Enter word" name="word">
+    <button type="submit">Search</button>
+</form>
+
+    <div id="meaningDisplay">
+    <!-- Display the word and its meaning -->
+    <h2>{{ word }}</h2>
+    {% if meaning %}
+    <div>
+        <p>Part of Speech: {{ meaning.part_of_speech }}</p>
+        <p>Definition: {{ meaning.definition }}</p>
+        <!-- Add more details as needed -->
+        <!-- Display sentences and synonyms -->
+        {% if meaning.sentences %}
+        <p>Sentences:</p>
+        <ul>
+            {% for sentence in meaning.sentences %}
+            <li>{{ sentence }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if meaning.synonyms %}
+        <p>Synonyms:</p>
+        <ul>
+            {% for synonym in meaning.synonyms %}
+            <li>{{ synonym }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+  </div>
+   </div>
+  </div>
+      <h1>Searched Words</h1>
+    <ul>
+        {% for word in searched_words %}
+            <li>{{ word.word }} :- {{ word.meaning }}</li>
+        {% empty %}
+            <li>No searched words yet.</li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

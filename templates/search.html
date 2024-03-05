@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load range_tag %}
+
+<div class="content">
+  <!-- Main Content Area -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Left Sidebar - Category Section -->
+      <div class="col-md-2">
+          <div id="category-section">
+        <h4>Categories</h4>
+        <ul class="list-group">
+          {% for categories in category %}
+            <li class="list-group-item">
+              <a href="{% url 'category_detail' name=categories.name|slugify %}">
+                {{ categories.name }}
+              </a>
+            </li>
+          {% endfor %}
+          <!-- Add more categories as needed -->
+        </ul>
+      </div>
+          </div>
+
+      <div class="col-md-8">
+          <h3>Search For: {{ query }}</h3>
+          <div class="reading-canvas">
+      <!-- Right Sidebar - Story Reading Canvas -->
+      <div class="container-fluid">
+        {% for stories in search_story %}
+        <div class="card mt-4">
+      <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+         <img src="https://static.vecteezy.com/system/resources/thumbnails/009/749/751/small/avatar-man-icon-cartoon-male-profile-mascot-illustration-head-face-business-user-logo-free-vector.jpg" alt="User Profile" class="user-profile-img">
+          <br>
+         <h6  id="username">{{ stories.user.username }}
+            <a href=""
+               class="btn btn-primary" id="follow">+</a></h6>          <h6 class="card-subtitle mb-2 text-muted">Category: {{stories.Category}}, Author: {{stories.Author}}</h6>
+          <br>
+          <h5 class="card-title">{{stories.Title}}</h5>
+           <div class="stars">
+            {% if stories.rating > 0 %}
+    {% for _ in stories.rating|get_range %}
+        <span class="star">&#9733;</span>
+    {% endfor %}
+{% else %}
+    <p>No ratings yet.</p>
+{% endif %}
+
+</div>
+          <p>{{stories.Content|truncatewords:1}}</p>
+           <a href="{% url 'readmore' id=stories.id|slugify %}"
+               class="btn btn-primary">Read More</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+        {% endfor %}
+  </div>
+      </div>
+
+      </div>
+  </div>
+  </div>
+</div>
+
+{% endblock %}

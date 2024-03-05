@@ -1,0 +1,408 @@
+.content{
+background-color: antiquewhite;
+margin-top: -25px;
+padding-right: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: antiquewhite;
+}
+
+header {
+  background-color: #87CEEB; /* Light Blue */
+  padding: 20px;
+  height: 100px;
+  text-align: left;
+  color: #333;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3em;
+}
+
+header p {
+  margin: 5px 0 0;
+  font-size: 30px;
+  color: #555;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  color: #555;
+  line-height: 1.6;
+}
+#nav {
+  list-style-type: none;
+  margin: -100px 0 0 0;
+  padding: 0;
+  height: 100px;
+  overflow: hidden;
+  background-color: #87CEEB;
+  text-align: right; /* Align text to the right */
+}
+
+#nav ul {
+  list-style: none; /* Remove bullet points */
+  display: flex; /* Use flexbox to make the items align horizontally */
+  justify-content: flex-end; /* Align items to the right */
+}
+
+#nav li {
+  margin-right: 10px; /* Optional: Add some spacing between the items */
+  font-size: 2em;
+}
+
+#nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#nav a:hover {
+  background-color: #111;
+  transition: background-color 0.3s; /* Add a smooth transition effect */
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-item {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+.nav-link2 {
+    margin-left: 0px;
+    padding: 8px 16px; /* Adjust as needed */
+    border-radius: 10px; /* Adjust as needed */
+    background-color:#228B22; /* Primary color */
+    color: #FFFFFF; /* Text color */
+
+}
+
+.nav-link1 {
+    margin-left: 20px;
+    padding: 8px 16px; /* Adjust as needed */
+    border-radius: 10px; /* Adjust as needed */
+    background-color:#ff0000; /* Primary color */
+    color: #FFFFFF;
+}
+
+.nav-link:hover {
+    background-color:  #008000; /* Darker shade of primary color */
+    color: #FFFFFF; /* Text color */
+}
+
+/* Style for the search bar */
+.form-inline .form-control {
+  width: 300px;
+}
+
+/* Style for the main content area */
+
+
+/* Style for the category section */
+.list-group-item {
+  cursor: pointer;
+}
+
+/* Style for story cards */
+
+/* new css */
+.scard {
+  width: 340px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: antiquewhite;
+
+}
+
+.card {
+  width: 500px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: antiquewhite;
+
+}
+
+
+.card-title {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card-subtitle {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  padding: 20px;
+  width: 600px;
+}
+
+.user-profile-img {
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Adjust the size as needed */
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+#username {
+ margin-top: -35px;
+ margin-left: 45px;
+}
+
+#descript {
+ margin-top: 5px;
+ margin-left: -45px;
+}
+.story-thumbnail-img {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.btn-read-more {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-read-more:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+/* end new css */
+
+
+.reading-canvas {
+  width: 100%;
+  background-color: #FFD580; /* Yellow */
+  padding: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.preading-canvas {
+  display: flex;
+  background-color:  #FFD580; /* Yellow */
+  padding-top: 30px;
+  margin-left: 0px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.creading-canvas {
+  display: flex;
+  background-color:  #FFD580; /* Yellow */
+  padding-top: 30px;
+  padding-button: 30px;
+
+  margin-left: 0px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.list-group {
+    margin-top: 10px;
+
+}
+
+.list-group-item {
+    border: none;
+    padding: 10px 15px;
+    padding-left: 40px;
+    background-color: #f8f9fa; /* Background color for list items */
+    border-radius: 6px; /* Rounded corners for list items */
+    margin-bottom: 5px;
+    margin-left: -35px;/* Add space between list items */
+    transition: background-color 0.3s;
+}
+
+.list-group-item a {
+    color: #333;
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    color: #007bff;
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef; /* Lighter background color on hover */
+}
+
+/* publish.htm */
+/* Custom styles for the publish page */
+.container {
+    padding-top: 20px;
+}
+
+.form-area {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-area h2 {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif; /* Use Arial or any suitable sans-serif font */
+}
+
+textarea.form-control {
+    resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff; /* Text color for the button */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+h5 {
+    text-align: left;
+}
+
+.profile-img {
+    max-width: 150px;
+    border-radius: 50%;
+    border: 4px solid #fff; /* White border for the profile image */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+/* Style for the published stories and essays section */
+.mb-4 {
+    color: #333; /* Dark text color */
+    border-bottom: 2px solid #007bff; /* Blue border bottom for heading */
+    padding-bottom: 10px;
+}
+
+/* Style for dicionary */
+
+/* Specific styles for the dictionary section */
+.dictionary-container {
+    margin-left: 50px;
+}
+
+.profile{
+padding:10px;
+background-color: antiquewhite;
+margin-top:-50px;
+}
+
+.star-rating {
+      font-size: 0;
+
+    }
+    .star-rating input {
+      display: none;
+    }
+    .star-rating label {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: orange;
+    }
+    .star-rating input:checked ~ label {
+      color: orange;
+    }
+
+.stars{
+font-size: 0.7rem;
+color: orange;
+margin-top:-10px;
+}
+
+.pcard{
+padding:20px;
+margin: 40px;
+}
+
+#carouselExampleIndicators .carousel-inner {
+    margin-top: 35px;
+    height: 63vh; /* 50% of the viewport height */
+  }
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+
+.upper-component {
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+.pagination-container {
+    text-align: center;
+}
+
+.pagination .step-links a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.pagination .current {
+    margin: 0 10px;
+}
+
+.pagination .current {
+    color: #007bff;
+}

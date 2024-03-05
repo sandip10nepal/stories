@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load range_tag %}
+<div class="content">
+  <!-- Main Content Area -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Left Sidebar - Category Section -->
+      <div class="col-md-2">
+          <div id="category-section">
+        <h4>Categories</h4>
+        <ul class="list-group">
+          {% for category in category %}
+            <li class="list-group-item">
+              <a href="{% url 'category_detail' name=category.name|slugify %}">
+                {{ category.name }}
+              </a>
+            </li>
+          {% endfor %}
+          <!-- Add more categories as needed -->
+        </ul>
+      </div>
+          </div>
+      <div class="creading-canvas">
+      <div class="col-md-8">
+      <!-- Right Sidebar - Story Reading Canvas -->
+      <div class="container-fluid">
+        <h1 class="card-title">{{story.Title}}</h1>
+        <div class="card mt-4" >
+            <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+         <img src="https://static.vecteezy.com/system/resources/thumbnails/009/749/751/small/avatar-man-icon-cartoon-male-profile-mascot-illustration-head-face-business-user-logo-free-vector.jpg" alt="User Profile" class="user-profile-img">
+          <br>
+<h6 id="username">{{ story.user.username }}
+                                {% if current_user.is_authenticated %}
+                                {% if story.user.username in following_usernames %}
+                                <p>Following</p>
+                                {% else %}
+                                <form action="{% url 'follow_user' story.user.username %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit">Follow</button>
+                                </form>
+                                {% endif %}
+                                {% else %}
+                                <p>Please log in to follow this author.</p>
+                                {% endif %}
+                            </h6>
+            <h6 class="card-subtitle mb-2 text-muted" > Category: {{story.Category}}, Author: {{story.Author}}</h6>
+          <br>
+          <h5 class="card-title">{{story.Title}}</h5>
+        <div class="stars">
+            {% if average_rating %}
+    {% for _ in average_rating|get_range %}
+        <span class="star">&#9733;</span>
+    {% endfor %}
+
+{% else %}
+    <p>no ratings yet</p>
+            {% endif %}
+</div>
+
+          <p>{{story.Content}}</p>
+            <form method="post" action="/submit_rating/">
+        {% csrf_token %}
+                <input type="hidden" name="story_id" value="{{ story.id }}">
+
+        <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">&#9733;</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">&#9733;</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">&#9733;</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">&#9733;</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">&#9733;</label>
+    </div>
+                <button type="submit" class="btn btn-primary">Submit Rating</button>
+                {% if user_ratings %}
+    <!-- Display user's ratings for the story -->
+    {% for rating in user_ratings %}
+       You have rated: {{ rating.value }}
+    {% endfor %}
+{% else %}
+    <!-- Handle case where there are no ratings for the current user -->
+    No ratings available.
+{% endif %}
+    </form>
+            {% if messages %}
+          {{ message.tags }}
+          <div class = "alert alert-primary" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+          </div>
+          {% endif %}
+  </div>
+      </div>
+            </div>
+        </div>
+          </div>
+
+  </div>
+      </div>
+        <div class="dictionary-container">
+        <div class="col-md-2">
+            <h4>Dictionary </h4>
+    <form id="dictionaryForm" action="/dictionary" method="post">
+    {% csrf_token %}
+    <input type="text" id="wordInput" placeholder="Enter word" name="word">
+    <button type="submit">Search</button>
+</form>
+
+    <div id="meaningDisplay">
+    <!-- Display the word and its meaning -->
+    <h2>{{ word }}</h2>
+    {% if meaning %}
+    <div>
+        <p>Part of Speech: {{ meaning.part_of_speech }}</p>
+        <p>Definition: {{ meaning.definition }}</p>
+        <!-- Add more details as needed -->
+        <!-- Display sentences and synonyms -->
+        {% if meaning.sentences %}
+        <p>Sentences:</p>
+        <ul>
+            {% for sentence in meaning.sentences %}
+            <li>{{ sentence }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if meaning.synonyms %}
+        <p>Synonyms:</p>
+        <ul>
+            {% for synonym in meaning.synonyms %}
+            <li>{{ synonym }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+  </div>
+   </div>
+  </div>
+  </div>
+</div>
+
+{% endblock %}

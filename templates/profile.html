@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load range_tag %}
+{% block content %}
+<div class="profile">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- User Account Information -->
+                <div class="pcard">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/009/749/751/small/avatar-man-icon-cartoon-male-profile-mascot-illustration-head-face-business-user-logo-free-vector.jpg" alt="User Profile" class="user-profile-img">
+                    <h4 class="card-title">{{ user.first_name }}</h4>
+                    <p class="card-text">{{ user.username }}</p>
+                    <h1>Statistics</h1>
+                    <div class="stat">
+                        <p>Followers: <a href="">{{ followers_count }}</a></p>
+        <p>Following: <a href="">{{ following_count }}</a></p>
+                        <p>Total Rating: <span id="totalRating">{{rating_count}}</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 preading-canvas">
+                <div class="container-fluid">
+                    <h1>Published Stories</h1>
+                    {% for stories in story %}
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/009/749/751/small/avatar-man-icon-cartoon-male-profile-mascot-illustration-head-face-business-user-logo-free-vector.jpg" alt="User Profile" class="user-profile-img">
+                                        <br>
+                                        <h6 id="username">{{ stories.user.username }}</h6>
+                                        <br>
+                                        <h6 class="card-subtitle mb-2 text-muted">Category: {{ stories.Category }}, Author: {{ stories.Author }}</h6>
+                                        <br>
+                                        <h5 class="card-title">{{ stories.Title }}</h5>
+                                        <div class="stars">
+                                            {% if stories.rating > 0 %}
+                                                {% for _ in stories.rating|get_range %}
+                                                    <span class="star">&#9733;</span>
+                                                {% endfor %}
+                                            {% else %}
+                                                <p>No ratings yet.</p>
+                                            {% endif %}
+                                        </div>
+                                        <p>{{ stories.Content|truncatewords:1 }}</p>
+                                        <a href="{% url 'readmore' id=stories.id|slugify %}" class="btn btn-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
