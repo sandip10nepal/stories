@@ -14,7 +14,7 @@
         <ul class="list-group">
           {% for category in category %}
             <li class="list-group-item">
-              <a href="{% url 'category_detail' name=category.name|slugify %}">
+         <a href="{% url 'category_detail' name=category.name %}#{{ category.name|slugify }}">
                 {{ category.name }}
               </a>
             </li>

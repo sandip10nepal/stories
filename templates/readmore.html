@@ -33,20 +33,20 @@
         <div class="col-md-12">
          <img src="https://static.vecteezy.com/system/resources/thumbnails/009/749/751/small/avatar-man-icon-cartoon-male-profile-mascot-illustration-head-face-business-user-logo-free-vector.jpg" alt="User Profile" class="user-profile-img">
           <br>
-<h6 id="username">{{ story.user.username }}
-                                {% if current_user.is_authenticated %}
-                                {% if story.user.username in following_usernames %}
-                                <p>Following</p>
-                                {% else %}
-                                <form action="{% url 'follow_user' story.user.username %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit">Follow</button>
-                                </form>
-                                {% endif %}
-                                {% else %}
-                                <p>Please log in to follow this author.</p>
-                                {% endif %}
-                            </h6>
+<h6> <a href="{% url 'profile' story.user.username %}">{{ story.user.username }}</a>
+    {% if current_user.is_authenticated %}
+        {% if story.user.username in following_usernames %}
+            <p>Following</p>
+        {% else %}
+            <form action="{% url 'follow_user' story.user.username %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Follow</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <p>Please log in to follow this author.</p>
+    {% endif %}
+</h6>
             <h6 class="card-subtitle mb-2 text-muted" > Category: {{story.Category}}, Author: {{story.Author}}</h6>
           <br>
           <h5 class="card-title">{{story.Title}}</h5>

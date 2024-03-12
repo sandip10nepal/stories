@@ -125,10 +125,10 @@ def category_detail(request, name):
 
     # Get the list of usernames the current user is following
     if current_user.is_authenticated:
-        try:
-            following_usernames = current_user.userprofile.following.values_list('username', flat=True)
-        except UserProfile.DoesNotExist:
-            pass
+        user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+        following_usernames = user_profile.following.values_list('username', flat=True)
+    else:
+        following_usernames = []
     return render(request, 'test2.html', {'story': story, 'name': name, 'category': category, 'current_user': current_user, 'following_usernames': following_usernames})
 
 def profile(request, username):
